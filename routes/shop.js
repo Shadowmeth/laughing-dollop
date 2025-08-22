@@ -1,10 +1,9 @@
 const express = require("express");
-const path = require("path");
-
+const utils = require("../lib/utils");
 const router = express.Router();
 
 router.get("/", (_req, res, _next) => {
-  res.sendFile(path.join(__dirname, "../", "views", "shop.html"));
+  res.sendFile(utils.createViewPath("shop.html"));
 });
 
 module.exports = router;
