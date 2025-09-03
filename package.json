@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "name": "nodejs-complete-guide",
   "version": "1.0.0",
   "description": "",
