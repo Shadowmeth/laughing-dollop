@@ -1,7 +1,8 @@
 const path = require("path");
 const express = require("express");
-const utils = require("./lib/utils");
 const bodyParser = require("body-parser");
+
+const errorController = require("./controllers/error");
 
 const app = express();
 
@@ -14,13 +15,10 @@ const shopRoutes = require("./routes/shop");
 app.use(bodyParser.urlencoded());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/admin", adminRoutes.routes);
+app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 
-// Note that this is a catch all middleware
-// Using it to handle 404 for now
-app.use((_req, res, _next) => {
-  res.status(404).render("404", { pageTitle: "Page Not Found" });
-});
+// Note that this is a catch all middleware, using it to handle 404 for now
+app.use(errorController.get404);
 
 app.listen(3000);
