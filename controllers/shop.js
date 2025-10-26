@@ -45,6 +45,12 @@ exports.getOrders = (req, res, next) => {
   });
 };
 
+exports.postCart = (req, res, next) => {
+  const productId = req.body.productId;
+  console.log(productId);
+  res.redirect("/cart");
+};
+
 exports.getCheckout = (req, res, next) => {
   res.render("shop/checkout", {
     path: "/checkout",
